@@ -6,3 +6,53 @@ body {
     background-color: #EEF9BF;
     font-family: 'Roboto', sans-serif;
 }
+
+.login-screen {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 130px;
+    height: 92px;
+    margin-top: 72px;
+}
+
+.login-screen input{
+    margin-top: 94px;
+    width: 261px;
+    height: 54px;
+
+    color: #AEAEAE;
+    background-color: #FFFFFF;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+}
+
+.login-screen button {
+    margin-top: 15px;
+    width: 109px;
+    height: 45px;
+
+    color: #696969;
+    background-color: #E7E7E7;
+    border: none;
+    border-radius: 9px;
+}
+
+.login-screen .specs{
+    font-size: 18px;
+    line-height: 25px;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
