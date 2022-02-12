@@ -124,26 +124,25 @@ main {
     padding-bottom: 91px;
 }
 
-.message {
+.infos {
     margin: 2px 0;
     font-size: 14px;
     line-height: 16px;
     display: flex;
     align-items: center;
-    height: 40px;
-    padding: 0 8px;
+    padding: 13px 8px;
 }
 
 b {
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.time {
-    color: gray;
+small {
+    color: #AAAAAA;
 }
 
 .status {
-    background-color: red;
+    background-color: #DCDCDC;
 }
 
 .message {

@@ -51,9 +51,9 @@ function showMessages(answer) {
 function showMessage(message){
     const container = document.querySelector("main");
     container.innerHTML += `
-    <p class="message ${message.type}"><span class="time">(${message.time})</span> <b>${message.from}</b> para <b>${message.to}</b>: ${message.text}</p>
+    <p class="infos ${message.type}"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}</b>: &nbsp; ${message.text}</p>
     `
-    container.scrollIntoView(false);
+    //container.scrollIntoView(false);
 }
 
 function sendMessage(){
