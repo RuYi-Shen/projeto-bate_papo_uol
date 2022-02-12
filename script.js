@@ -2,28 +2,33 @@ let username = "";
 let user = {};  //object that contains the username
 let message = {};   //object that contains the user message info
 
-let messages = {};  //object that contains all the messages and their infos
+let messages = {};  //array of objects that contains all the messages and their infos
+let participants = {}; //array of objects that contains all the participants names
 
 /** promises for each type of axios acquisition*/
 let promiseStatus;
-let promiseParticipants;
 let promiseMessagesGet;
 let promiseMessagesPost;
+let promiseParticipantsGet;
+let promiseParticipantsPost;
 
-reloadMessages();   //to improve user experience, ask beforehand for messages
+loadMessages();   //to improve user experience, ask beforehand for messages
+//loadParticipants(); //to improve user experience, ask beforehand for participants
 
 function logar(){
     username = document.querySelector(".login-screen input").value;
     user = {
         name: username
     }
-    promiseParticipants = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", user);
-    promiseParticipants.then(enterChat);
-    promiseParticipants.catch(verifyError);
+    promiseParticipantsPost = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", user);
+    promiseParticipantsPost.then(enterChat);
+    promiseParticipantsPost.catch(verifyError);
 }
 
 function enterChat(){
     stayOnline();
+    reloadMessages();
+    reloadParticipants();
     document.querySelector(".login-screen").classList.add("hide");
 }
 
@@ -35,11 +40,13 @@ function stayOnline(){
 }
 
 function reloadMessages(){
-    setInterval(function(){
-        promiseMessagesGet = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
-        promiseMessagesGet.then(showMessages);
-        promiseMessagesGet.catch(getError);
-        }, 3000);
+    setInterval(loadMessages, 3000);
+}
+
+function loadMessages(){
+    promiseMessagesGet = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
+    promiseMessagesGet.then(showMessages);
+    promiseMessagesGet.catch(getError);
 }
 
 function showMessages(answer) {
@@ -54,6 +61,34 @@ function showMessage(message){
     <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}</b>: &nbsp; ${message.text}</p>
     `
     container.scrollIntoView(false);
+}
+
+function reloadParticipants(){
+    setInterval(loadParticipants, 10000);
+}
+
+function loadParticipants(){
+    promiseParticipantsGet = axios.get("https://mock-api.driven.com.br/api/v4/uol/participants");
+    promiseParticipantsGet.then(showParticipants);
+    promiseParticipantsGet.catch(getError);
+}
+
+function showParticipants(answer) {
+    participants = answer;
+    console.log(answer);
+    console.log(answer.data);
+    document.querySelector("aside .contacts").innerHTML = "";
+    participants.forEach(showParticipant);
+}
+
+function showParticipant(participant){
+    const container = document.querySelector("aside .contacts");
+    container.innerHTML += `
+    <div class="contact">
+        <ion-icon name="person-circle"></ion-icon>
+        <p>${participant.name}</p>
+    </div>
+    `
 }
 
 function sendMessage(){
