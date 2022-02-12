@@ -15,7 +15,7 @@ let promiseParticipantsPost;
 loadMessages();   //to improve user experience, ask beforehand for messages
 //loadParticipants(); //to improve user experience, ask beforehand for participants
 
-function logar(){
+function login(){
     username = document.querySelector(".login-screen input").value;
     user = {
         name: username
@@ -28,7 +28,7 @@ function logar(){
 function enterChat(){
     stayOnline();
     reloadMessages();
-    reloadParticipants();
+    //reloadParticipants();
     document.querySelector(".login-screen").classList.add("hide");
 }
 
@@ -63,7 +63,7 @@ function filterMessages(message){
 function showMessage(message){
     const container = document.querySelector("main");
     container.innerHTML += `
-    <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}</b>: &nbsp; ${message.text}</p>
+    <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}: </b> &nbsp; ${message.text}</p>
     `
     container.scrollIntoView(false);
 }
@@ -132,3 +132,11 @@ function hideParticipants(){
     document.querySelector(".black-screen").classList.add("hide");
     document.querySelector("aside").classList.add("hide");
 }
+
+document.querySelector("footer input").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) sendMessage();
+    });
+
+document.querySelector(".login-screen input").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) login();
+    });
