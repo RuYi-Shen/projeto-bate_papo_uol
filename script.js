@@ -52,7 +52,12 @@ function loadMessages(){
 function showMessages(answer) {
     messages = answer.data;
     document.querySelector("main").innerHTML = "";
+    messages = messages.filter(filterMessages);
     messages.forEach(showMessage);
+}
+
+function filterMessages(message){
+    if (message.from === username || message.to === username || message.to === "Todos") return true;
 }
 
 function showMessage(message){
