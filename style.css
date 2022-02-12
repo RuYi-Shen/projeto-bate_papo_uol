@@ -98,9 +98,9 @@ footer {
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 }
 
-footer input { 
+footer input {
     height: 100%;
-    width: calc(100% - 43px);    
+    width: calc(100% - 43px);
     font-style: italic;
     font-size: 18px;
     line-height: 21px;
@@ -113,4 +113,43 @@ footer ion-icon {
     height: 26px;
     width: 26px;
     margin: 17px;
+}
+
+footer ion-icon:hover {
+    cursor: pointer;
+}
+
+main {
+    padding-top: 104px;
+    padding-bottom: 91px;
+}
+
+.message {
+    margin: 2px 0;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 8px;
+}
+
+b {
+    font-weight: bold;
+}
+
+.time {
+    color: gray;
+}
+
+.status {
+    background-color: red;
+}
+
+.message {
+    background-color: white;
+}
+
+.private_message {
+    background-color: #FFDEDE;
 }
