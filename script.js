@@ -51,9 +51,9 @@ function showMessages(answer) {
 function showMessage(message){
     const container = document.querySelector("main");
     container.innerHTML += `
-    <p class="infos ${message.type}"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}</b>: &nbsp; ${message.text}</p>
+    <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}</b>: &nbsp; ${message.text}</p>
     `
-    //container.scrollIntoView(false);
+    container.scrollIntoView(false);
 }
 
 function sendMessage(){
@@ -81,4 +81,14 @@ function reloadPage(error){
 
 function getError(error){
     console.log(error.response);
+}
+
+function showParticipants(){
+    document.querySelector(".black-screen").classList.remove("hide");
+    document.querySelector("aside").classList.remove("hide");
+}
+
+function hideParticipants(){
+    document.querySelector(".black-screen").classList.add("hide");
+    document.querySelector("aside").classList.add("hide");
 }

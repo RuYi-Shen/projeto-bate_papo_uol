@@ -17,15 +17,33 @@
 <body>
     <header>
         <img src="media/logo.png" alt="logo uol">
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" onclick="showParticipants()"></ion-icon>
     </header>
 
     <main></main>
-    <aside></aside>
+
+    <div class="black-screen hide" onclick="hideParticipants()"></div>
+
+    <aside class="hide">
+        <p class="choices">Escolha um contato para enviar mensagem:</p>
+        <div class="contact">
+            <ion-icon name="people"></ion-icon>
+            <p>Todos</p>
+        </div>
+        <p class="choices">Escolha a visibilidade:</p>
+        <div class="visibility">
+            <ion-icon name="lock-open"></ion-icon>
+            <p>Público</p>
+        </div>
+        <div class="visibility">
+            <ion-icon name="lock-closed"></ion-icon>
+            <p>Reservadamente</p>
+        </div>
+    </aside>
 
     <footer>
         <input type="text" placeholder="Escreva aqui...">
-        <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        <ion-icon name="paper-plane-outline" data-identifier="send-message" onclick="sendMessage()"></ion-icon>
     </footer>
 
     <div class="login-screen">
@@ -34,9 +52,7 @@
         <button class="specs" onclick="logar()">Entrar</button>
     </div>
 
-    <!-- <ion-icon name="person-circle"></ion-icon>
-    <ion-icon name="lock-open"></ion-icon>
-    <ion-icon name="lock-closed"></ion-icon> -->
+    <!-- <ion-icon name="person-circle"></ion-icon> -->
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

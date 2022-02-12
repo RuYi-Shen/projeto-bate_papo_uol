@@ -13,7 +13,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 4;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -73,6 +73,7 @@ header {
     justify-content: space-between;
     padding: 0 22px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1;
 }
 
 header img {
@@ -96,6 +97,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1;
 }
 
 footer input {
@@ -131,6 +133,8 @@ main {
     display: flex;
     align-items: center;
     padding: 13px 8px;
+    overflow: auto;
+    
 }
 
 b {
@@ -147,8 +151,48 @@ small {
 
 .message {
     background-color: white;
+    white-space: pre-line;
+
 }
 
 .private_message {
     background-color: #FFDEDE;
+}
+
+.black-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 259px;
+    height: 100vh;
+    background-color: white;
+    z-index: 3;
+    padding: 0 18px;
+}
+
+.contact, .visibility {
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+}
+
+aside .choices{
+    padding: 25px 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
