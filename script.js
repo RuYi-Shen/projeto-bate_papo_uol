@@ -62,9 +62,15 @@ function filterMessages(message){
 
 function showMessage(message){
     const container = document.querySelector("main");
-    container.innerHTML += `
-    <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}: </b> &nbsp; ${message.text}</p>
-    `
+    if(message.type === "status"){
+        container.innerHTML += `
+        <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp;&nbsp; ${message.text}</p>
+        `
+    }else{
+        container.innerHTML += `
+        <p class="infos ${message.type}" data-identifier="message"><small>(${message.time})</small> &nbsp;&nbsp; <b>${message.from}</b> &nbsp; para &nbsp; <b>${message.to}: </b> &nbsp; ${message.text}</p>
+        `
+    }
     container.scrollIntoView(false);
 }
 
