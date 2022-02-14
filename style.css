@@ -178,23 +178,40 @@ aside {
     background-color: white;
     z-index: 3;
     padding: 0 18px;
+    font-size: 16px;
+    line-height: 19px;
+    overflow: auto;
+}
+
+aside ion-icon{
+    height: 25px;
+    width: 25px;
+    margin-right: 8px;
 }
 
 .contact, .visibility {
-    font-size: 16px;
-    line-height: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.contact > div, .visibility > div {
     display: flex;
     align-items: center;
 }
 
-aside .choices{
+.contact > ion-icon, .visibility > ion-icon {
+    color: #28BB25;
+}
+
+.choices{
     padding: 25px 0;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .hide {

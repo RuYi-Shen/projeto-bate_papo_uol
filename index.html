@@ -19,7 +19,7 @@
     <div class="login-screen">
         <img src="media/logo.png" alt="logo uol">
         <input class="specs" type="text" placeholder="Digite seu nome" data-identifier="enter-name">
-        <button class="specs" data-identifier="enter-name" onclick="login()">Entrar</button>
+        <button class="specs" data-identifier="start" onclick="login()">Entrar</button>
     </div>
 
     <header>
@@ -32,25 +32,33 @@
     <div class="black-screen hide" onclick="hideMenu()"></div>
 
     <aside class="hide">
+
         <p class="choices">Escolha um contato para enviar mensagem:</p>
-        <div class="contact">
-            <ion-icon name="people"></ion-icon>
-            <p>Todos</p>
-        </div>
-        <div class="contacts">
-            <div class="contact">
-                <ion-icon name="person-circle"></ion-icon>
-                <p>Lili</p>
+        
+        <div class="contact" data-identifier="participant" onclick="selectContact(this, this.innerText)">
+            <div>
+                <ion-icon name="people"></ion-icon>
+                <p>Todos</p>
             </div>
+            <ion-icon class="selected" name="checkmark-outline"></ion-icon>
         </div>
+        <div class="contacts"></div>
+
         <p class="choices">Escolha a visibilidade:</p>
-        <div class="visibility">
-            <ion-icon name="lock-open"></ion-icon>
-            <p>Público</p>
+        
+        <div class="visibility" data-identifier="visibility" onclick="selectVisibility(this, 'message')">
+            <div>
+                <ion-icon name="lock-open"></ion-icon>
+                <p>Público</p>
+            </div>
+            <ion-icon class="selected" name="checkmark-outline"></ion-icon>
         </div>
-        <div class="visibility">
-            <ion-icon name="lock-closed"></ion-icon>
-            <p>Reservadamente</p>
+        <div class="visibility" data-identifier="visibility" onclick="selectVisibility(this, 'private_message')">
+            <div>
+                <ion-icon name="lock-closed"></ion-icon>
+                <p>Reservadamente</p>
+            </div>
+            <ion-icon class="selected hide" name="checkmark-outline"></ion-icon>
         </div>
     </aside>
 

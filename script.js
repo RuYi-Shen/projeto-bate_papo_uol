@@ -5,6 +5,9 @@ let message = {};   //object that contains the user message info
 let messages = [];  //array of objects that contains all the messages and their infos
 let participants = []; //array of objects that contains all the participants names
 
+let contact = "Todos"; //set the contact of the message
+let visibility = "message"; //set the visibility of the message
+
 /** promises for each type of axios acquisition*/
 let promiseStatus;
 let promiseMessagesGet;
@@ -87,30 +90,66 @@ function loadParticipants(){
 function showParticipants(answer) {
     participants = answer.data;
     document.querySelector("aside .contacts").innerHTML = "";
+    participants = participants.filter(filterParticipants);
     participants.forEach(showParticipant);
+}
+
+function filterParticipants(participant){
+    if (participant.name != username) return true;
 }
 
 function showParticipant(participant){
     const container = document.querySelector("aside .contacts");
-    container.innerHTML += `
-    <div class="contact">
-        <ion-icon name="person-circle"></ion-icon>
-        <p>${participant.name}</p>
-    </div>
-    `
+    if(participant.name === contact){
+        container.innerHTML += `
+        <div class="contact" data-identifier="participant" onclick="selectContact(this, this.innerText)">
+            <div>
+                <ion-icon name="person-circle"></ion-icon>
+                <p>${participant.name}</p>
+            <div>
+            <ion-icon class="selected" name="checkmark-outline"></ion-icon>
+        </div>
+        `
+    }else{
+        container.innerHTML += `
+        <div class="contact" data-identifier="participant" onclick="selectContact(this, this.innerText)">
+            <div>
+                <ion-icon name="person-circle"></ion-icon>
+                <p>${participant.name}</p>
+            <div>
+            <ion-icon class="selected hide" name="checkmark-outline"></ion-icon>
+        </div>
+        `
+    }
 }
 
 function sendMessage(){
     message = {
         from: username,
-        to: "Todos",
+        to: contact,
         text:  document.querySelector("footer input").value,
-        type: "message"
+        type: visibility
     }
     document.querySelector("footer input").value = "";
     promiseMessagesPost = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", message);
     promiseMessagesPost.then(reloadMessages);
     promiseMessagesPost.catch(reloadPage);
+}
+
+function selectContact(element, name){
+    document.querySelectorAll(".contact .selected").forEach(deselect);
+    element.querySelector(".selected").classList.remove("hide");
+    contact = name;
+}
+
+function selectVisibility(element, type){
+    document.querySelectorAll(".visibility .selected").forEach(deselect);
+    element.querySelector(".selected").classList.remove("hide");
+    visibility = type;
+}
+
+function deselect(element){
+    element.classList.add("hide");
 }
 
 function verifyError(error){
