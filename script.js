@@ -2,8 +2,8 @@ let username = "";
 let user = {};  //object that contains the username
 let message = {};   //object that contains the user message info
 
-let messages = {};  //array of objects that contains all the messages and their infos
-let participants = {}; //array of objects that contains all the participants names
+let messages = [];  //array of objects that contains all the messages and their infos
+let participants = []; //array of objects that contains all the participants names
 
 /** promises for each type of axios acquisition*/
 let promiseStatus;
@@ -13,7 +13,7 @@ let promiseParticipantsGet;
 let promiseParticipantsPost;
 
 loadMessages();   //to improve user experience, ask beforehand for messages
-//loadParticipants(); //to improve user experience, ask beforehand for participants
+loadParticipants(); //to improve user experience, ask beforehand for participants
 
 function login(){
     username = document.querySelector(".login-screen input").value;
@@ -28,7 +28,7 @@ function login(){
 function enterChat(){
     stayOnline();
     reloadMessages();
-    //reloadParticipants();
+    reloadParticipants();
     document.querySelector(".login-screen").classList.add("hide");
 }
 
@@ -85,9 +85,7 @@ function loadParticipants(){
 }
 
 function showParticipants(answer) {
-    participants = answer;
-    console.log(answer);
-    console.log(answer.data);
+    participants = answer.data;
     document.querySelector("aside .contacts").innerHTML = "";
     participants.forEach(showParticipant);
 }
@@ -129,12 +127,12 @@ function getError(error){
     console.log(error.response);
 }
 
-function showParticipants(){
+function showMenu(){
     document.querySelector(".black-screen").classList.remove("hide");
     document.querySelector("aside").classList.remove("hide");
 }
 
-function hideParticipants(){
+function hideMenu(){
     document.querySelector(".black-screen").classList.add("hide");
     document.querySelector("aside").classList.add("hide");
 }

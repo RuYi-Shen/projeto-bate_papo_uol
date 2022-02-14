@@ -15,14 +15,21 @@
 </head>
 
 <body>
+
+    <div class="login-screen">
+        <img src="media/logo.png" alt="logo uol">
+        <input class="specs" type="text" placeholder="Digite seu nome" data-identifier="enter-name">
+        <button class="specs" data-identifier="enter-name" onclick="login()">Entrar</button>
+    </div>
+
     <header>
         <img src="media/logo.png" alt="logo uol">
-        <ion-icon name="people" onclick="showParticipants()"></ion-icon>
+        <ion-icon name="people" onclick="showMenu()"></ion-icon>
     </header>
 
     <main></main>
 
-    <div class="black-screen hide" onclick="hideParticipants()"></div>
+    <div class="black-screen hide" onclick="hideMenu()"></div>
 
     <aside class="hide">
         <p class="choices">Escolha um contato para enviar mensagem:</p>
@@ -51,12 +58,6 @@
         <input type="text" placeholder="Escreva aqui...">
         <ion-icon name="paper-plane-outline" data-identifier="send-message" onclick="sendMessage()"></ion-icon>
     </footer>
-
-    <div class="login-screen">
-        <img src="media/logo.png" alt="logo uol">
-        <input class="specs" type="text" placeholder="Digite seu nome" data-identifier="enter-name">
-        <button class="specs" data-identifier="enter-name" onclick="login()">Entrar</button>
-    </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
